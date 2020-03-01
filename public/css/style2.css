@@ -1,0 +1,42 @@
+/* NAV - HEADER */
+.nav-header .brand-title {
+    color: white;
+    font-weight: 600;
+}
+
+/* LIST-FIXED */
+.list-fixed {
+    position: fixed;
+    left: 2em;
+    bottom: 1em;
+    width: 150px;
+    height: 50px;
+    z-index: 1000;
+    background-color: rgba(16, 70, 151, 0.637);
+    border-radius: 50px;
+    text-align: center;
+    /* padding: 15px 0; */
+    color: white;
+    vertical-align: middle;
+    line-height: 50px;
+}
+
+.list-fixed a {
+    color: white
+}
+
+/* SIDE BAR */
+.nk-sidebar ul {
+    margin-top: 10px;
+}
+
+.nk-sidebar ul li {
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.5em;
+    margin: 0.5em;
+}
+
+.nk-sidebar ul li:hover {
+    background-color: rgba(64, 241, 241, 0.473);
+}
