@@ -1,6 +1,7 @@
 <template>
   <div class="ho-component">
-    <h1>THis is Ho component</h1>
+    <h1>THis is Ho {{chitietho.ten_chu_ho}}</h1>
+    <button v-on:click="deleteHothuongtru(chitietho)">DELETE</button>
     <table class="table">
       <tbody>
         <tr>
@@ -31,6 +32,7 @@
           <th>Họ tên khác</th>
           <th>Ngày sinh</th>
           <th>Giới tính</th>
+          <th>Quê quanS</th>
           <th>Dân tộc</th>
           <th>Tôn giáo</th>
           <th>Số CMND</th>
@@ -47,6 +49,9 @@
           :id="'nhankhau'+nhankhau.nhankhau_id"
         >
           <td v-for="(value, key) in nhankhau" :key="key">{{value}}</td>
+          <td>
+            <button>DELETE</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -93,7 +98,7 @@ export default {
   async mounted() {
     console.log("Chi tiet ho:" + this.$route.params.ho_id);
     this.chitietho = JSON.parse(localStorage.getItem("ho"));
-    console.log(this.chitietho);
+    // console.log(this.chitietho);
 
     // THis Fetch api will render the list of nhankhauthuongtru and nhankhautamtru
     let hothuongtru = JSON.parse(localStorage.getItem("ho"));
@@ -117,7 +122,22 @@ export default {
     // renderNhanKhauComponent(nhankhau) {
     //   localStorage.setItem("nhankhau", JSON.stringify(nhankhau));
     //   vue_router.push("/vue/chitietnhankhau/" + nhankhau.nhankhau_id);
-    // }
+    // },
+
+    async deleteHothuongtru(hothuongtru) {
+      let form_datas = new FormData();
+      form_datas.append("ho_id", hothuongtru.ho_id);
+
+      fetch("/deletehothuongtru", {
+        method: "POST",
+        body: form_datas,
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        }
+      })
+        .then(res => res.text())
+        .then(res => console.log(res));
+    }
   }
 };
 </script>

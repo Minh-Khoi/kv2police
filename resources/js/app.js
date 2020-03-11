@@ -48,3 +48,17 @@ const app = new Vue({
     //     ExampleComponent
     // }
 });
+
+//when click the "Danh sách hộ" render the DanhsachComponent
+document.querySelector('.list-fixed.ho ').addEventListener('click', function (e) {
+    vue_router.push({
+        path: "/"
+    });
+});
+
+//when click the "Danh sách nhân khẩu" render the DanhsachNhanKhauComponent
+document.querySelector('.list-fixed.nhankhau ').addEventListener('click', function (e) {
+    vue_router.push({
+        path: "/vue/danhsachnhankhau"
+    });
+});

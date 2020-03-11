@@ -19,12 +19,13 @@ class nhankhautamtru_dao
     public function create(nhankhautamtru $nhankhau)
     {
         DB::insert('insert into nhankhautamtru(
-                hoten, hotenkhac, ngaysinh, gioitinh, dantoc, tongiao, cmnd, passport, nghenghiep, so_hshk, ho_id
-                ) values (?,?,?,?,?,?,?,?,?,?,?)
+                hoten, hotenkhac, ngaysinh, gioitinh, quequan, dantoc, tongiao, cmnd, passport,
+                nghenghiep, quanhe_chuho, so_hshk, ho_id
+                ) values (?,?,?,?,?,?,?,?,?,?,?,?)
             ', [
             $nhankhau->hoten, $nhankhau->hotenkhac, $nhankhau->ngaysinh,
-            $nhankhau->gioitinh, $nhankhau->dantoc,  $nhankhau->tongiao,
-            $nhankhau->cmnd,  $nhankhau->passport,  $nhankhau->nghenghiep,
+            $nhankhau->gioitinh, $nhankhau->quequan, $nhankhau->dantoc,  $nhankhau->tongiao,
+            $nhankhau->cmnd,  $nhankhau->passport,  $nhankhau->nghenghiep, $nhankhau->quanhe_chuho,
             $nhankhau->so_hshk,  $nhankhau->ho_id
         ]);
     }
@@ -35,7 +36,7 @@ class nhankhautamtru_dao
         $list_of_nhankhau = DB::select('select * from nhankhautamtru');
         $list_of_nhankhau_objects = [];
         foreach ($list_of_nhankhau as $nhankhau_infos) {
-            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             foreach ($nhankhau_infos as $key => $value) {
                 $nhankhau->$key = $value;
             }
@@ -50,7 +51,7 @@ class nhankhautamtru_dao
         $list_of_nhankhau = DB::select('select * from nhankhautamtru where nhankhau_id=?', [$nhankhau_id]);
         $list_of_nhankhau_objects = [];
         foreach ($list_of_nhankhau as $nhankhau_infos) {
-            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             foreach ($nhankhau_infos as $key => $value) {
                 $nhankhau->$key = $value;
             }
@@ -65,7 +66,7 @@ class nhankhautamtru_dao
         $list_of_nhankhau = DB::select('select * from nhankhautamtru where hoten=?', [$hoten]);
         $list_of_nhankhau_objects = [];
         foreach ($list_of_nhankhau as $nhankhau_infos) {
-            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             foreach ($nhankhau_infos as $key => $value) {
                 $nhankhau->$key = $value;
             }
@@ -80,7 +81,7 @@ class nhankhautamtru_dao
         $list_of_nhankhau = DB::select('select * from nhankhautamtru where gioitinh=?', [$gioitinh]);
         $list_of_nhankhau_objects = [];
         foreach ($list_of_nhankhau as $nhankhau_infos) {
-            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             foreach ($nhankhau_infos as $key => $value) {
                 $nhankhau->$key = $value;
             }
@@ -95,7 +96,7 @@ class nhankhautamtru_dao
         $list_of_nhankhau = DB::select('select * from nhankhautamtru where dantoc=?', [$dantoc]);
         $list_of_nhankhau_objects = [];
         foreach ($list_of_nhankhau as $nhankhau_infos) {
-            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             foreach ($nhankhau_infos as $key => $value) {
                 $nhankhau->$key = $value;
             }
@@ -110,7 +111,7 @@ class nhankhautamtru_dao
         $list_of_nhankhau = DB::select('select * from nhankhautamtru where tongiao=?', [$tongiao]);
         $list_of_nhankhau_objects = [];
         foreach ($list_of_nhankhau as $nhankhau_infos) {
-            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             foreach ($nhankhau_infos as $key => $value) {
                 $nhankhau->$key = $value;
             }
@@ -125,7 +126,7 @@ class nhankhautamtru_dao
         $list_of_nhankhau = DB::select('select * from nhankhautamtru where so_hshk=?', [$so_hshk]);
         $list_of_nhankhau_objects = [];
         foreach ($list_of_nhankhau as $nhankhau_infos) {
-            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             foreach ($nhankhau_infos as $key => $value) {
                 $nhankhau->$key = $value;
             }
@@ -140,7 +141,7 @@ class nhankhautamtru_dao
         $list_of_nhankhau = DB::select('select * from nhankhautamtru where ho_id=?', [$ho_id]);
         $list_of_nhankhau_objects = [];
         foreach ($list_of_nhankhau as $nhankhau_infos) {
-            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            $nhankhau = new nhankhautamtru(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
             foreach ($nhankhau_infos as $key => $value) {
                 $nhankhau->$key = $value;
             }
@@ -153,13 +154,13 @@ class nhankhautamtru_dao
     public function update(nhankhautamtru $nhankhau)
     {
         $affected = DB::update('update nhankhautamtru set
-                hoten =?, hotenkhac=?, ngaysinh=?, gioitinh?, dantoc=?,
-                tongiao=?, cmnd=?, passport=?, nghenghiep=?, so_hshk=?, ho_id=?
+                hoten =?, hotenkhac=?, ngaysinh=?, gioitinh=?, quequan=?, dantoc=?,
+                tongiao=?, cmnd=?, passport=?, nghenghiep=?, quanhe_chuho=?, so_hshk=?, ho_id=?
             where nhankhau_id=?
         ', [
             $nhankhau->hoten, $nhankhau->hotenkhac, $nhankhau->ngaysinh,
-            $nhankhau->gioitinh, $nhankhau->dantoc,  $nhankhau->tongiao,
-            $nhankhau->cmnd,  $nhankhau->passport,  $nhankhau->nghenghiep,
+            $nhankhau->gioitinh, $nhankhau->quequan, $nhankhau->dantoc,  $nhankhau->tongiao,
+            $nhankhau->cmnd,  $nhankhau->passport,  $nhankhau->nghenghiep, $nhankhau->quanhe_chuho,
             $nhankhau->so_hshk,  $nhankhau->ho_id, $nhankhau->nhankhau_id
         ]);
 

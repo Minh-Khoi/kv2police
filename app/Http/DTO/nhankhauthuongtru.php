@@ -4,7 +4,8 @@ namespace App\Http\DTO;
 
 class nhankhauthuongtru
 {
-    public $nhankhau_id, $hoten, $hotenkhac, $ngaysinh, $gioitinh, $dantoc, $tongiao, $cmnd, $passport, $nghenghiep, $so_hshk, $ho_id;
+    public $nhankhau_id, $hoten, $hotenkhac, $ngaysinh, $gioitinh, $quequan, $dantoc,
+        $tongiao, $cmnd, $passport, $nghenghiep, $quanhe_chuho, $so_hshk, $ho_id;
 
     /**
      * Class constructor.
@@ -15,11 +16,13 @@ class nhankhauthuongtru
         $hotenkhac,
         $ngaysinh,
         $gioitinh,
+        $quequan,
         $dantoc,
         $tongiao,
         $cmnd,
         $passport,
         $nghenghiep,
+        $quanhe_chuho,
         $so_hshk,
         $ho_id
     ) {
@@ -28,11 +31,13 @@ class nhankhauthuongtru
         $this->hotenkhac = $hotenkhac;
         $this->ngaysinh = $ngaysinh;
         $this->gioitinh = $gioitinh;
+        $this->quequan = $quequan;
         $this->dantoc = $dantoc;
         $this->tongiao = $tongiao;
         $this->cmnd = $cmnd;
         $this->passport = $passport;
         $this->nghenghiep = $nghenghiep;
+        $this->quanhe_chuho = $quanhe_chuho;
         $this->so_hshk = $so_hshk;
         $this->ho_id = $ho_id;
     }

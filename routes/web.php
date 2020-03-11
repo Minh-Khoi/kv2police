@@ -44,7 +44,7 @@ Route::get('connection', function () {
         } else {
             return ("Could not find the database. Please check your configuration.");
         }
-    } catch (\Exception $e) {
+    } catch (Exception $e) {
         die("Could not open connection to database server.  Please check your configuration." . $e);
     }
 });
@@ -56,4 +56,11 @@ Route::get('crud/check', 'Controller@check');
 Route::post('gettodanpho', 'Controller@renderToDanPho');
 Route::post('getnhankhau', 'Controller@renderNhanKhau');
 Route::post('getdanhsachho', 'Controller@renderHoThuongTru');
+Route::post('getdanhsachnhankhau', 'Controller@renderDanhSachNhanKhau');
 Route::post('getchitietho', 'Controller@renderChiTietHo');
+Route::post('createhothuongtru', 'Controller@createHoThuongTru');
+Route::post('edithothuongtru', 'Controller@editHoThuongTru');
+Route::post('deletehothuongtru', 'Controller@deleteHoThuongTru');
+Route::post('createnhankhau', 'Controller@createNhanKhau');
+Route::post('editnhankhau', 'Controller@editNhanKhau');
+Route::post('deletenhankhau', 'Controller@deleteNhanKhau');

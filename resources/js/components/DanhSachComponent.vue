@@ -1,6 +1,7 @@
 <template>
-  <div class="danhsach-component">
+  <div class="danhsach-component" id="myTable">
     <h1>THis is Danh sacsh component</h1>
+    <button v-on:click="renderToChinhSuaHoComponent()">Thêm hộ thường trú</button>
     <table class="table">
       <thead>
         <tr>
@@ -18,6 +19,9 @@
           v-on:click="renderToHoComponent(input)"
         >
           <td v-for="(inputValue, key) in input" :key="key">{{inputValue}}</td>
+          <td>
+            <!-- <button v-on:click="deleteHothuongtru(input)">DELETE</button> -->
+          </td>
         </tr>
       </tbody>
     </table>
@@ -86,6 +90,27 @@ export default {
       localStorage.setItem("ho", JSON.stringify(hothuongtru));
       // Then use Router push() to render the Vue HoComponent
       vue_router.push({ path: "/vue/chitietho/" + hothuongtru.ho_id });
+    },
+    renderToChinhSuaHoComponent() {
+      //   if (localStorage.getItem("loginSuccess")){
+      //the this.$route.params=create mean the vue componenent which is rendered
+      // will be set in "create mode"
+      vue_router.push({ path: "/vue/chinhsuaho/creating" });
+      //   }
+    },
+    deleteHothuongtru(hothuongtru) {
+      let form_datas = new FormData();
+      form_datas.append("ho_id", hothuongtru.ho_id);
+
+      fetch("/deletehothuongtru", {
+        method: "POST",
+        body: form_datas,
+        headers: {
+          "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        }
+      })
+        .then(res => res.text())
+        .then(res => console.log(res));
     }
   }
 };

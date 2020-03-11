@@ -52,9 +52,13 @@
     <!--**********************************
             Nav header end
         ***********************************-->
-    <div class="list-fixed">
-        <a href="/">DANH SÁCH CHUNG</a>
+    <div class="list-fixed ho">
+        <p>DANH SÁCH ho</p>
     </div>
+    <div class="list-fixed nhankhau">
+        <p>DANH SÁCH nhan khau</p>
+    </div>
+
 
     <!--**********************************
             Header start
@@ -70,10 +74,10 @@
             <div class="header-left">
                 <div class="input-group icons">
 
-                    <input type="search" class="form-control" placeholder="Search Dashboard"
+                    <input type="search" class="form-control" placeholder="Search Dashboard" id="myInput" onkeyup="filterTable()"
                         aria-label="Search Dashboard">
-
                 </div>
+
             </div>
             <div class="header-right">
                 <ul class="clearfix">
@@ -157,6 +161,7 @@
 
 @endsection
 
+
 @section('script_tags')
 <!--**********************************
         Scripts
@@ -172,7 +177,37 @@
 
 <script src="{{asset('/js/app.js')}}"></script>
 
-<!-- <script src="./js/theme/components/ExampleComponent.js"></script> -->
+<!--this script is for the table filter-->
+<script>
+function filterTable() {
+    // Declare variables
+    let input, filter, table, tr, tds;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    // console.log(input);
+    // Loop through all table rows, and hide those who don't match the search query
+    for (let i = 0; i < tr.length; i++) {
+        tds = tr[i].getElementsByTagName("td");
+        let txtValues =[];
+        for(let j=0; j<tds.length; j++){
+            txtValues.push(tds[j].textContent || tds[j].innerText);
+        }
+        for(let j=0; j<tds.length; j++){
+            if ((txtValues[j].toUpperCase().indexOf(filter) > -1)  ) {
+                tr[i].style.display = "";
+                // console.log(txtValues[j]);
+                // console.log(filter);
+                break;
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
 
+<!-- <script src="./js/theme/components/ExampleComponent.js"></script> -->
 
 @endsection

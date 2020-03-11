@@ -21,6 +21,10 @@
     line-height: 50px;
 }
 
+.list-fixed.nhankhau {
+    bottom: 5em;
+}
+
 .list-fixed a {
     color: white
 }
